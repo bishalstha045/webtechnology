@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - QuickFood</title>
+</head>
+
+<body>
+
+<!-- HEADER SECTION -->
+<header>
+    <h1>QuickFood - Fresh Groceries Online</h1>
+    <p>Fast Delivery | Fresh Products</p>
+</header>
+
+<!-- NAVIGATION SECTION -->
+<nav>
+    <a href="index.html">Home</a> | 
+    <a href="product.html">Products</a> | 
+    <a href="about.html">About</a> | 
+    <a href="contact.html">Contact</a> | 
+    <a href="cart.html">Cart</a> | 
+    <a href="login.html">Login</a>
+</nav>
+
+<hr>
+
+<!-- CHECKOUT SECTION -->
+<section>
+    <h2>Checkout</h2>
+
+    <form action="checkout.html" method="post">
+
+        <!-- BILLING INFORMATION -->
+        <h3>Billing Information</h3>
+
+        <label>Full Name:</label><br>
+        <input type="text" name="fullname" required placeholder="Enter your full name"><br><br>
+
+        <label>Email Address:</label><br>
+        <input type="email" name="email" required placeholder="Enter your email"><br><br>
+
+        <label>Phone Number:</label><br>
+        <input type="tel" name="phone" required placeholder="Enter your phone number\"><br><br>
+
+        <label>Delivery Address:</label><br>
+        <textarea name="address" rows=\"4\" cols=\"50\" required placeholder=\"Enter your full delivery address\"></textarea><br><br>
+
+        <label>City:</label><br>
+        <input type=\"text\" name=\"city\" required placeholder=\"Enter your city\"><br><br>
+
+        <label>Postal Code:</label><br>
+        <input type=\"text\" name=\"postal\" required placeholder=\"Enter postal code\"><br><br>
+        <!-- PAYMENT METHOD -->
+        <h3>Payment Method</h3>
+
+        <label><input type="radio" name="payment" value="credit" required> Credit Card</label><br>
+        <label><input type="radio" name="payment" value="debit"> Debit Card</label><br>
+        <label><input type="radio" name="payment" value="cod"> Cash on Delivery</label><br><br>
+
+        <!-- ORDER SUMMARY -->
+        <h3>Order Summary</h3>
+        <p><strong>Subtotal:</strong> $8</p>
+        <p><strong>Delivery Charge:</strong> $2</p>
+        <p><strong>Total Amount: $10</strong></p><br>
+
+        <!-- SUBMIT BUTTONS -->
+        <button type="submit">Place Order</button>
+        <a href="cart.html"><button type="button">Back to Cart</button></a>
+
+    </form>
+</section>
+
+<hr>
+
+<!-- FOOTER SECTION -->
+<footer>
+    <p>&copy; 2026 QuickFood. All rights reserved.</p>
+    <p>Contact: support@quickfood.com | Phone: 1-800-FRESH99</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - QuickFood</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- HEADER SECTION -->
+<center>
+    <h1>QuickFood - Your Shopping Cart</h1>
+</center>
+<!-- NAVIGATION BAR -->
+<div class="navbar">
+    <center>
+        <a href="index.html">Home</a>
+        <a href="product.html">Products</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="cart.html" class="active">Cart</a>
+        <a href="login.html">Login</a>
+    </center>
+</div>
+<hr>
+<!-- SHOPPING CART SECTION -->
+<section>
+    <h2>Your Shopping Cart</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Unit Price</th>
+                <th>Quantity</th>
+                <th>Total Price</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Fresh Tomatoes</td>
+                <td>₹150</td>
+                <td>2 kg</td>
+                <td>₹300</td>
+                <td><a href="#">Remove</a></td>
+            </tr>
+            <tr>
+                <td>Fresh Carrots</td>
+                <td>₹100</td>
+                <td>1 kg</td>
+                <td>₹100</td>
+                <td><a href="#">Remove</a></td>
+            </tr>
+        </tbody>
+    </table>
+    <h3 style="margin-top: 30px;">Order Summary</h3>
+    <div style="background: #f0fdf4; padding: 20px; border-radius: 10px; max-width: 400px;">
+        <p><strong>Subtotal:</strong> <span style="float: right;">₹400</span></p>
+        <p><strong>Delivery Charge:</strong> <span style="float: right;">₹100</span></p>
+        <hr style="margin: 10px 0;">
+        <p style="font-size: 18px;"><strong>Total Amount:</strong> <span style="float: right; color: #27ae60;">₹500</span></p>
+    </div>
+
+    <br>
+    <div style="text-align: center; margin-top: 30px;">
+        <a href="checkout.html"><button>Proceed to Checkout</button></a>
+        <a href="product.html"><button style="background: #3498db; margin-left: 10px;">Continue Shopping</button></a>
+    </div>
+</section>
+<hr>
+<!-- FOOTER SECTION -->
+<footer>
+    <div style="max-width: 1200px; margin: 0 auto;">
+        <h4>Quick Links</h4>
+        <p>
+            <a href="about.html" style="color: white;">About Us</a> | 
+            <a href="contact.html" style="color: white;">Contact</a> | 
+            <a href="product.html" style="color: white;">Shop Now</a>
+        </p>
+        <hr style="border-color: #555; margin: 15px 0;">
+        <h4>Contact Information</h4>
+        <p>Email: <strong>bishal@quickfood.com</strong></p>
+        <p>Phone: <strong>+918618460311</strong></p>
+        <p>Working Hours: Monday - Sunday, 8:00 AM - 10:00 PM</p>
+        <hr style="border-color: #555; margin: 15px 0;">
+        <p>&copy; 2026 QuickFood. All rights reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>

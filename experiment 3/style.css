@@ -1,0 +1,481 @@
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+body {
+    background: linear-gradient(135deg, #ecf0f1 0%, #d5f4e6 100%);
+    color: #2c3e50;
+    line-height: 1.6
+}
+
+center {
+    text-align: center
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #3b82f6;
+    margin-bottom: 12px;
+    transition: all 0.3s ease
+}
+
+h1 {
+    font-size: 32px;
+    font-weight: 700
+}
+
+h2 {
+    font-size: 24px
+}
+
+h3 {
+    font-size: 20px
+}
+
+center h1 {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    color: white;
+    padding: 30px 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease
+}
+
+center h1:hover {
+    box-shadow: 0 6px 16px rgba(59, 130, 246, 0.25);
+    transform: translateY(-2px)
+}
+
+.tagline {
+    display: none
+}
+
+.navbar {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    padding: 12px 0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1)
+}
+
+.navbar center a,
+center a {
+    background: #2563eb;
+    color: white;
+    text-decoration: none;
+    padding: 10px 18px;
+    margin: 5px;
+    font-weight: 600;
+    display: inline-block;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    cursor: pointer
+}
+
+.navbar center a:hover,
+center a:hover {
+    background: #1d4ed8;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 12px rgba(59, 130, 246, 0.3)
+}
+
+.navbar center a.active,
+center a.active {
+    background: #1e40af
+}
+
+.products-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+    width: 100%
+}
+
+@media(max-width:768px) {
+    .products-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px
+    }
+}
+
+@media(max-width:480px) {
+    .products-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 0 15px
+    }
+}
+
+.product-card {
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    transition: all 0.3s ease
+}
+
+.product-card:hover {
+    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.25);
+    border-color: #3b82f6;
+    transform: translateY(-6px)
+}
+
+.product-card h3 {
+    color: #3b82f6;
+    margin: 10px 0;
+    font-size: 18px;
+    font-weight: 600;
+    transition: all 0.3s ease
+}
+
+.product-card:hover h3 {
+    color: #2563eb
+}
+
+.product-card img {
+    border-radius: 8px;
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    margin: 10px 0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease
+}
+
+.product-card:hover img {
+    transform: scale(1.08)
+}
+
+.product-card p {
+    color: #555;
+    font-weight: 600;
+    margin: 10px 0;
+    font-size: 15px
+}
+
+.product-card a {
+    background: #3b82f6;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease
+}
+
+.product-card a:hover {
+    background: #2563eb;
+    box-shadow: 0 5px 12px rgba(59, 130, 246, 0.3);
+    transform: translateY(-3px)
+}
+
+section {
+    background: white;
+    margin: 20px auto;
+    padding: 25px;
+    border-radius: 8px;
+    max-width: 1000px;
+    width: 95%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08)
+}
+
+section h2 {
+    color: #3b82f6;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #3b82f6;
+    padding-bottom: 10px;
+    transition: all 0.3s ease
+}
+
+section h3 {
+    color: #2563eb;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    transition: all 0.3s ease
+}
+
+section ul {
+    margin-left: 20px
+}
+
+section ul li {
+    margin: 8px 0;
+    color: #2c3e50
+}
+
+table {
+    width: 100%;
+    margin: 20px auto;
+    background: white;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08)
+}
+
+table th {
+    background: #3b82f6;
+    color: white;
+    padding: 12px;
+    text-align: center;
+    font-weight: 600;
+    transition: all 0.3s ease
+}
+
+table td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ecf0f1;
+    color: #2c3e50;
+    transition: all 0.3s ease
+}
+
+table tr:nth-child(even) {
+    background-color: #f8fafb
+}
+
+table tr:hover {
+    background-color: rgba(59, 130, 246, 0.1);
+    transition: background 0.3s ease
+}
+
+table a {
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease
+}
+
+table a:hover {
+    color: #1e40af;
+    text-decoration: underline
+}
+
+form {
+    max-width: 600px;
+    margin: 20px auto;
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08)
+}
+
+label {
+    display: block;
+    margin-top: 12px;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #2c3e50
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    background: white;
+    color: #2c3e50
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: #3b82f6;
+    background: #f0f7ff;
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.15);
+    transition: all 0.3s ease
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px
+}
+
+button {
+    background: #3b82f6;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-right: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    display: inline-block;
+    transition: all 0.3s ease
+}
+
+button:hover {
+    background: #2563eb;
+    box-shadow: 0 5px 12px rgba(59, 130, 246, 0.3);
+    transform: translateY(-3px)
+}
+
+button:active {
+    background: #1d4ed8;
+    transform: translateY(-1px)
+}
+
+a {
+    color: #3b82f6;
+    text-decoration: none;
+    transition: all 0.3s ease
+}
+
+a:hover {
+    color: #1e40af;
+    text-decoration: underline
+}
+
+img {
+    border-radius: 8px;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 10px auto;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease
+}
+
+img:hover {
+    transform: scale(1.05)
+}
+
+p {
+    margin: 10px 0;
+    text-align: justify;
+    padding: 0 10px;
+    color: #2c3e50
+}
+
+footer {
+    background: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 40px;
+    border-top: 2px solid #3b82f6;
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease
+}
+
+footer p {
+    color: white;
+    margin: 8px 0;
+    padding: 0;
+    transition: all 0.3s ease
+}
+
+footer h4 {
+    color: #60a5fa;
+    margin-top: 12px;
+    margin-bottom: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease
+}
+
+footer h4:hover {
+    color: #3b82f6
+}
+
+footer a {
+    color: white;
+    transition: all 0.3s ease
+}
+
+footer a:hover {
+    color: #60a5fa;
+    text-decoration: underline
+}
+
+hr {
+    border: none;
+    border-top: 2px solid #3b82f6;
+    margin: 20px 0;
+    transition: all 0.3s ease
+}
+
+@media(max-width:640px) {
+    center h1 {
+        font-size: 22px;
+        padding: 18px 15px
+    }
+
+    .navbar center a {
+        padding: 8px 12px;
+        margin: 3px;
+        font-size: 13px
+    }
+
+    section {
+        padding: 15px;
+        margin: 15px auto
+    }
+
+    section h2 {
+        font-size: 20px
+    }
+
+    table {
+        font-size: 13px
+    }
+
+    table th,
+    table td {
+        padding: 8px
+    }
+
+    form {
+        padding: 15px
+    }
+
+    button {
+        padding: 8px 16px;
+        font-size: 13px
+    }
+}
+
+@media(max-width:480px) {
+    center h1 {
+        font-size: 20px;
+        padding: 15px 10px
+    }
+
+    .navbar {
+        padding: 8px 0
+    }
+
+    .navbar center a {
+        padding: 6px 10px;
+        margin: 2px;
+        font-size: 12px
+    }
+
+    p {
+        text-align: left;
+        font-size: 14px
+    }
+}
