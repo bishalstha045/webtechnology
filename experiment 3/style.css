@@ -350,6 +350,93 @@ a:hover {
     text-decoration: underline
 }
 
+/* Signup Section Styles */
+section.signup-section {
+    max-width: 600px !important;
+}
+
+.signup-title {
+    text-align: center;
+}
+
+.signup-subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.checkbox-group {
+    margin: 20px 0;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.checkbox-label:last-child {
+    margin-bottom: 0;
+}
+
+.checkbox-label input[type="checkbox"] {
+    margin-right: 10px;
+    width: 18px;
+    height: 18px;
+}
+
+.checkbox-text {
+    color: #2c3e50;
+}
+
+.form-buttons {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.reset-btn {
+    background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%) !important;
+    margin-left: 10px;
+}
+
+.reset-btn:hover {
+    background: linear-gradient(135deg, #7f8c8d 0%, #6c7a78 100%) !important;
+}
+
+.signup-divider {
+    border-color: #ecf0f1;
+    margin: 25px 0;
+}
+
+.login-link-section {
+    text-align: center;
+    color: #555;
+    margin: 10px 0;
+}
+
+.login-link {
+    color: #27ae60 !important;
+    font-weight: 600;
+}
+
+.login-link:hover {
+    color: #229954 !important;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-divider {
+    border-color: #555;
+    margin: 15px 0;
+}
+
+footer a {
+    color: white;
+}
+
 img {
     border-radius: 8px;
     max-width: 100%;
