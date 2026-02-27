@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modern Registration Form</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+        background: linear-gradient(135deg, #5b6386, #3fc89f);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .container {
+        background: #ffffff;
+        width: 100%;
+        max-width: 650px;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        animation: fadeIn 0.6s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .form-group {
+        margin-bottom: 18px;
+    }
+
+    label {
+        font-weight: 600;
+        margin-bottom: 6px;
+        display: block;
+        color: #444;
+    }
+
+    input, select, textarea {
+        width: 100%;
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        transition: 0.3s;
+        font-size: 14px;
+    }
+
+    input:focus, select:focus, textarea:focus {
+        border-color: #667eea;
+        outline: none;
+        box-shadow: 0 0 8px rgba(102,126,234,0.4);
+    }
+
+    .inline-group {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+
+    .inline-group label {
+        font-weight: normal;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        border-radius: 8px;
+        border: none;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    .error {
+        color: red;
+        font-size: 13px;
+        margin-top: 4px;
+    }
+
+    #output {
+        margin-top: 25px;
+        padding: 15px;
+        background: #358383;
+        border-left: 5px solid #434e7d;
+        border-radius: 8px;
+        display: none;
+    }
+
+    #output h3 {
+        margin-bottom: 10px;
+        color: #333;
+    }
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Registration Form</h2>
+
+    <form id="myForm">
+
+        <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" id="name">
+            <div class="error" id="nameError"></div>
+        </div>
+
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="email">
+            <div class="error" id="emailError"></div>
+        </div>
+
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" id="password">
+            <div class="error" id="passwordError"></div>
+        </div>
+
+        <div class="form-group">
+            <label>Gender</label>
+            <div class="inline-group">
+                <label><input type="radio" name="gender" value="Male"> Male</label>
+                <label><input type="radio" name="gender" value="Female"> Female</label>
+                <label><input type="radio" name="gender" value="Other"> Other</label>
+            </div>
+            <div class="error" id="genderError"></div>
+        </div>
+
+        <div class="form-group">
+            <label>Hobbies</label>
+            <div class="inline-group">
+                <label><input type="checkbox" value="Reading" class="hobby"> Reading</label>
+                <label><input type="checkbox" value="Traveling" class="hobby"> Traveling</label>
+                <label><input type="checkbox" value="Photography" class="hobby"> Photography</label>
+                <label><input type="checkbox" value="Gaming" class="hobby"> Gaming</label>
+                <label><input type="checkbox" value="Cooking" class="hobby"> Cooking</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Country</label>
+            <select id="country">
+                <option value="">Select Country</option>
+                <option>Nepal</option>
+                <option>India</option>
+                <option>USA</option>
+                <option>Australia</option>
+            </select>
+            <div class="error" id="countryError"></div>
+        </div>
+
+        <div class="form-group">
+            <label>About You</label>
+            <textarea id="about" rows="3"></textarea>
+        </div>
+
+        <button type="submit">Register</button>
+
+    </form>
+
+    <div id="output"></div>
+</div>
+
+<script>
+document.getElementById("myForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    document.querySelectorAll(".error").forEach(el => el.innerText = "");
+    let isValid = true;
+
+    let name = document.getElementById("name").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let password = document.getElementById("password").value.trim();
+    let country = document.getElementById("country").value;
+    let about = document.getElementById("about").value.trim();
+
+    let genderElement = document.querySelector("input[name='gender']:checked");
+    let gender = genderElement ? genderElement.value : "";
+
+    let hobbies = [];
+    document.querySelectorAll(".hobby:checked").forEach(hobby => {
+        hobbies.push(hobby.value);
+    });
+
+    // Validation
+    if (name === "") {
+        document.getElementById("nameError").innerText = "Name is required";
+        isValid = false;
+    }
+
+    if (!/^[^ ]+@[^ ]+\.[a-z]{2,3}$/.test(email)) {
+        document.getElementById("emailError").innerText = "Enter a valid email";
+        isValid = false;
+    }
+
+    if (password.length < 6) {
+        document.getElementById("passwordError").innerText = "Password must be at least 6 characters";
+        isValid = false;
+    }
+
+    if (!gender) {
+        document.getElementById("genderError").innerText = "Select your gender";
+        isValid = false;
+    }
+
+    if (country === "") {
+        document.getElementById("countryError").innerText = "Select your country";
+        isValid = false;
+    }
+
+    if (!isValid) return;
+
+    let userData = { name, email, gender, hobbies, country, about };
+    localStorage.setItem("userData", JSON.stringify(userData));
+
+    let outputDiv = document.getElementById("output");
+    outputDiv.style.display = "block";
+
+    outputDiv.innerHTML = `
+        <h3>Submitted Information</h3>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Gender:</strong> ${gender}</p>
+        <p><strong>Hobbies:</strong> ${hobbies.join(", ")}</p>
+        <p><strong>Country:</strong> ${country}</p>
+        <p><strong>About:</strong> ${about}</p>
+    `;
+
+    document.getElementById("myForm").reset();
+});
+</script>
+
+</body>
+</html>
