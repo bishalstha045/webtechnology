@@ -3,97 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Technology Experiments</title>
+    <title>Web Technology Lab Experiments</title>
+    <!-- Modern web font -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for beautiful icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Web Technology Experiments</h1>
-    <div class="page-description">
-        <h2>About This Page</h2>
-        <p>
-            Welcome to the Web Technology course experiments page. This page showcases a series of practical projects designed to build your web development skills. Each experiment focuses on different aspects of web technologies, from basic HTML structure to advanced CSS styling and responsive design. Click on any experiment below to explore the projects.
-        </p>
+    <!-- Decorative subtle background gradients -->
+    <div class="bg-shape shadow-blue"></div>
+    <div class="bg-shape shadow-purple"></div>
+    <div class="bg-shape shadow-orange"></div>
+    <div class="bg-shape shadow-teal"></div>
+
+    <div class="container">
+        <!-- Top bar -->
+        <header class="header">
+            <div class="brand">
+                <div class="brand-icon"><i class="fas fa-layer-group"></i></div>
+                <div class="brand-text">
+                    <h1>Web Technology</h1>
+                    <p>Lab Experiments</p>
+                </div>
+            </div>
+            <div class="profile-chip">
+                <img src="https://ui-avatars.com/api/?name=Bishal+Shrestha&background=4f46e5&color=fff&rounded=true&bold=true" alt="BS">
+                <div class="profile-text">
+                    <span class="name">Bishal Shrestha</span>
+                    <span class="usn">USN: 24BTRCN091</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Heading -->
+        <div class="hero">
+            <h2>Explore The <span>Projects</span></h2>
+            <p>From static HTML to dynamic full-stack applications.</p>
+        </div>
+
+        <!-- Grid of Experiments -->
+        <main class="grid-container">
+            
+            <a href="experiment 1/index.html" class="card" target="_blank">
+                <div class="card-icon c-orange"><i class="fas fa-shopping-bag"></i></div>
+                <h3>Experiment 01</h3>
+                <p>Strategic semantic HTML building blocks mapped for a shopping cart and storefront layout.</p>
+            </a>
+
+            <a href="experiment 2/index.html" class="card" target="_blank">
+                <div class="card-icon c-blue"><i class="fas fa-address-card"></i></div>
+                <h3>Experiment 02</h3>
+                <p>Clean HTML structure to output professional bio text formatting without CSS intervention.</p>
+            </a>
+
+            <a href="experiment 3/index.html" class="card" target="_blank">
+                <div class="card-icon c-pink"><i class="fas fa-paint-roller"></i></div>
+                <h3>Experiment 03</h3>
+                <p>Applying vivid CSS frameworks upon the e-commerce structure for grid layouts and colors.</p>
+            </a>
+
+            <a href="experiment 4/index.html" class="card" target="_blank">
+                <div class="card-header">
+                    <div class="card-icon c-green"><i class="fas fa-laptop-code"></i></div>
+                </div>
+                <h3>Experiment 04</h3>
+                <p>Responsive media queries and modern grid styling applied onto the native portfolio skeleton.</p>
+            </a>
+
+            <a href="experiment 5/index.html" class="card" target="_blank">
+                <div class="card-icon c-purple"><i class="fas fa-calculator"></i></div>
+                <h3>Experiment 05</h3>
+                <p>Functional UI built via Javascript DOM manipulation to evaluate basic arithmetic actively.</p>
+            </a>
+
+            <a href="experiment 6/index.html" class="card" target="_blank">
+                <div class="card-icon c-red"><i class="fas fa-user-shield"></i></div>
+                <h3>Experiment 06</h3>
+                <p>Client-side UX mechanism intercepting input errors dynamically via Regex filtering.</p>
+            </a>
+
+            <a href="experiment7/index.html" class="card" target="_blank">
+                <div class="card-icon c-teal"><i class="fas fa-database"></i></div>
+                <h3>Experiment 07</h3>
+                <p>A robust offline browser-based dashboard utilizing persistent JavaScript window caching.</p>
+            </a>
+
+            <a href="experiment8/index.html" class="card" target="_blank">
+                <div class="card-icon c-indigo"><i class="fas fa-server"></i></div>
+                <h3>Experiment 08</h3>
+                <p>A step-wise visual guide mapping how to configure a local XAMPP environment and execute a basic PHP script.</p>
+            </a>
+
+            <a href="experiment9/index.html" class="card" target="_blank">
+                <div class="card-icon c-yellow"><i class="fas fa-square-root-alt"></i></div>
+                <h3>Experiment 09</h3>
+                <p>Advanced calculation interface natively capable of trigonometric & complex algebraic expressions.</p>
+            </a>
+
+            <a href="https://student.gt.tc" target="_blank" class="card card-featured">
+                <div class="card-icon c-white"><i class="fas fa-cloud"></i></div>
+                <h3>Experiment 10</h3>
+                <p>Live production cloud environment featuring real PHP APIs, role-based auth, and live SQL.</p>
+                <div class="external-tag">Live App <i class="fas fa-external-link-alt"></i></div>
+            </a>
+
+        </main>
     </div>
-
-    <h2 class="exp-header">Experiments Overview</h2>
-    
-    <table>
-        <thead>
-            <tr>
-                <th class="col-exp">Experiment</th>
-                <th class="col-project">Project</th>
-                <th class="col-description">Description</th>
-                <th class="col-link">Link</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><span class="exp-number">Exp 1</span></td>
-                <td><span class="exp-title">E-Commerce Website</span></td>
-                <td>
-                    <span class="exp-description">
-                        A basic e-commerce website built with HTML. Learn the fundamentals of creating product pages, shopping cart interface, and checkout process. This experiment focuses on semantic HTML structure and form creation.
-                    </span>
-                </td>
-                <td><a href="experiment 1/index.html" target="_blank">View →</a></td>
-            </tr>
-            <tr>
-                <td><span class="exp-number">Exp 2</span></td>
-                <td><span class="exp-title">Portfolio Website</span></td>
-                <td>
-                    <span class="exp-description">
-                        A personal portfolio website using HTML only. Showcase your skills, projects, and achievements. This project demonstrates how to structure a professional portfolio with navigation, sections, and contact information.
-                    </span>
-                </td>
-                <td><a href="experiment 2/index.html" target="_blank">View →</a></td>
-            </tr>
-            <tr>
-                <td><span class="exp-number">Exp 3</span></td>
-                <td><span class="exp-title">E-Commerce with CSS</span></td>
-                <td>
-                    <span class="exp-description">
-                        Enhanced e-commerce website with CSS styling. Learn to apply colors, layouts, spacing, and responsive design. This experiment demonstrates complete styling of product pages, cart design, and mobile responsiveness.
-                    </span>
-                </td>
-                <td><a href="experiment 3/index.html" target="_blank">View →</a></td>
-            </tr>
-            <tr>
-                <td><span class="exp-number">Exp 4</span></td>
-                <td><span class="exp-title">Portfolio with CSS</span></td>
-                <td>
-                    <span class="exp-description">
-                        A professionally styled portfolio website with modern CSS. Features a fixed navigation bar, clean typography, responsive grid layouts, and a fully functional contact form. This project demonstrates professional web design practices.
-                    </span>
-                </td>
-                <td><a href="experiment 4/index.html" target="_blank">View →</a></td>
-            </tr>
-            <tr>
-                <td><span class="exp-number">Exp 5</span></td>
-                <td><span class="exp-title">Modern Calculator</span></td>
-                <td>
-                    <span class="exp-description">
-                        A fully functional modern calculator web application built with HTML, CSS, and JavaScript. Features a responsive design, keyboard support, error handling, and safe expression evaluation without eval(). This project demonstrates advanced JavaScript programming, event handling, and professional UI/UX design.
-                    </span>
-                </td>
-                <td><a href="experiment 5/index.html" target="_blank">View →</a></td>
-            </tr>
-            <tr>
-                <td><span class="exp-number">Exp 6</span></td>
-                <td><span class="exp-title">Form validation</span></td>
-                <td>
-                    <span class="exp-description">
-                    A fully functional and secure form validation system built using HTML, CSS, and JavaScript. It ensures accurate user input through real-time validation, custom error handling, regex checks, and client-side security without compromising user experience, demonstrating advanced DOM manipulation and professional UI/UX practices.
-                </span>
-                </td>
-                <td><a href="experiment 6/index.html" target="_blank">View →</a></td>
-            </tr>
-        </tbody>
-    </table>
-
-    <footer>
-        <p><strong>Done by:</strong> Bishal Shrestha</p>
-        <p><strong>USN:</strong> 24BTRCN091</p>
-    </footer>
-
 </body>
 </html>
