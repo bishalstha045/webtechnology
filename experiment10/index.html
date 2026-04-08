@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Top Navigation -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+            <h1>Student Management</h1>
+        </div>
+        <div class="nav-controls">
+            <div class="stat-badge">Total: <span id="totalStudents">0</span></div>
+            <button id="themeToggle" class="icon-btn" title="Toggle Theme"><i class="fas fa-moon"></i></button>
+            <div class="user-profile" title="Admin: Bishal Shrestha"><img src="https://ui-avatars.com/api/?name=Bishal+Shrestha&background=3b82f6&color=fff" alt="Bishal Shrestha"></div>
+        </div>
+    </nav>
+
+    <!-- Main Dashboard Layout -->
+    <main class="dashboard-container">
+        
+        <!-- LEFT PANEL: FORM -->
+        <section class="panel form-panel">
+            <div class="panel-header">
+                <h2><i class="fas fa-user-plus"></i> <span id="formTitle">Register Student</span></h2>
+                <button type="button" id="btnCancelEdit" class="btn-text hidden">Cancel Edit</button>
+            </div>
+
+            <form id="studentForm" class="styled-form">
+                <input type="hidden" id="studentId" name="id">
+                <input type="hidden" id="existingImage" name="existing_image">
+
+                <div class="form-grid">
+                    <!-- Full Name -->
+                    <div class="form-group floating">
+                        <input type="text" id="name" name="name" placeholder=" " required>
+                        <label for="name">Full Name *</label>
+                    </div>
+
+                    <!-- USN -->
+                    <div class="form-group floating">
+                        <input type="text" id="usn" name="usn" placeholder=" " required>
+                        <label for="usn">USN *</label>
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="form-group floating">
+                        <input type="tel" id="phone" name="phone" placeholder=" " required>
+                        <label for="phone">Phone Number *</label>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="form-group floating">
+                        <input type="email" id="email" name="email" placeholder=" " required>
+                        <label for="email">Email Address *</label>
+                    </div>
+
+                    <!-- Course -->
+                    <div class="form-group floating">
+                        <select id="course" name="course" required>
+                            <option value="" disabled selected></option>
+                            <option value="B.Tech Computer Science">B.Tech Computer Science</option>
+                            <option value="BBA">BBA</option>
+                            <option value="BCA">BCA</option>
+                            <option value="B.Sc Information Technology">B.Sc Information Technology</option>
+                        </select>
+                        <label for="course">Course *</label>
+                    </div>
+
+                    <!-- DOB -->
+                    <div class="form-group floating">
+                        <input type="date" id="dob" name="dob" required>
+                        <label for="dob">Date of Birth *</label>
+                    </div>
+
+                    <!-- Gender -->
+                    <div class="form-group gender-group">
+                        <label class="static-label">Gender *</label>
+                        <div class="radio-wrapper">
+                            <label class="radio-option">
+                                <input type="radio" name="gender" value="Male" required>
+                                <span>Male</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="gender" value="Female">
+                                <span>Female</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="gender" value="Other">
+                                <span>Other</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Address -->
+                <div class="form-group floating full-width">
+                    <textarea id="address" name="address" rows="3" placeholder=" "></textarea>
+                    <label for="address">Address</label>
+                </div>
+
+                <!-- Profile Image -->
+                <div class="form-group full-width">
+                    <label>Profile Image</label>
+                    <div class="file-upload-wrapper">
+                        <div class="file-upload-box" id="dropZone">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Click or drag image here</p>
+                            <input type="file" id="image" name="image" accept="image/*">
+                        </div>
+                        <img id="imagePreview" src="" alt="Preview" class="hidden">
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="form-actions">
+                    <button type="reset" class="btn btn-outline" id="btnReset"><i class="fas fa-undo"></i> Clear</button>
+                    <button type="submit" class="btn btn-primary" id="btnSubmit">
+                        <span class="btn-text-content"><i class="fas fa-save"></i> Save Student</span>
+                        <div class="spinner hidden"></div>
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <!-- RIGHT PANEL: TABLE -->
+        <section class="panel table-panel">
+            <div class="panel-header">
+                <h2><i class="fas fa-database"></i> Students Data</h2>
+                
+                <div class="table-controls">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="Search by name or email...">
+                    </div>
+                    <button class="icon-btn" id="btnExport" title="Export to CSV"><i class="fas fa-file-csv"></i></button>
+                </div>
+            </div>
+
+            <div class="table-wrapper">
+                <table id="studentsTable">
+                    <thead>
+                        <tr>
+                            <th>Profile</th>
+                            <th>USN & Student Info</th>
+                            <th>Contact</th>
+                            <th>Course</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <!-- Data populated via AJAX -->
+                    </tbody>
+                </table>
+                
+                <!-- Loading State -->
+                <div id="tableLoading" class="table-state hidden">
+                    <div class="spinner-large"></div>
+                    <p>Loading records...</p>
+                </div>
+                
+                <!-- Empty State -->
+                <div id="tableEmpty" class="table-state hidden">
+                    <img src="https://cdn-icons-png.flaticon.com/512/7486/7486831.png" alt="No data" width="120">
+                    <h3>No students found</h3>
+                    <p>Register a new student to get started.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Toast Notifications -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script src="script.js?v=5"></script>
+</body>
+</html>

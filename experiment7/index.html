@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Form with Table</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
+
+    <div class="toast-container" id="toastContainer"></div>
+
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-user-graduate"></i> Student Form with Table</h1>
+            <p>Smart Management System</p>
+        </header>
+
+        <main>
+            <section class="card form-card">
+                <h2><i class="fas fa-user-plus"></i> Add Student</h2>
+                <form id="studentForm">
+                    <input type="hidden" id="editId">
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label>Name <span class="req">*</span></label>
+                            <input type="text" id="name" required placeholder="Enter full name">
+                        </div>
+                        <div class="input-group">
+                            <label>USN <span class="req">*</span></label>
+                            <input type="text" id="usn" required placeholder="Unique USN">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label>Email <span class="req">*</span></label>
+                            <input type="email" id="email" required placeholder="Valid email">
+                        </div>
+                        <div class="input-group">
+                            <label>Phone <span class="req">*</span></label>
+                            <input type="tel" id="phone" required placeholder="Phone number">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label>Address <span class="req">*</span></label>
+                            <input type="text" id="address" required placeholder="Full Address">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label>Course <span class="req">*</span></label>
+                            <select id="course" required>
+                                <option value="" disabled selected>Select Course</option>
+                                <option value="CSE">CSE (Computer Science)</option>
+                                <option value="ECE">ECE</option>
+                                <option value="AIML">AIML</option>
+                                <option value="CSDS">CSDS</option>
+                                <option value="SE">Software Engineering</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="actions">
+                        <button type="submit" class="btn primary" id="submitBtn">Add Student</button>
+                        <button type="button" class="btn secondary" id="resetBtn">Clear Form</button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="card table-card">
+                <div class="table-header">
+                    <h2><i class="fas fa-users"></i> Students Data</h2>
+                    <div class="table-controls">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="search" placeholder="Search name/course...">
+                        </div>
+                        <select id="sortData">
+                            <option value="none">Sort By</option>
+                            <option value="name_asc">Name (A-Z)</option>
+                            <option value="name_desc">Name (Z-A)</option>
+                            <option value="usn_asc">USN (Asc)</option>
+                        </select>
+                        <button class="btn icon-btn" id="copyBtn" title="Copy to Clipboard"><i class="fas fa-copy"></i></button>
+                        <button class="btn icon-btn" id="csvBtn" title="Download CSV"><i class="fas fa-download"></i></button>
+                        <button class="btn danger-btn" id="clearAllBtn" title="Delete All"><i class="fas fa-trash-alt"></i></button>
+                    </div>
+                </div>
+
+                <div class="stats">
+                    Total Students: <span id="totalStudents">0</span>
+                </div>
+
+                <div class="table-responsive">
+                    <table id="studentTable">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>USN</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Address</th>
+                                <th>Course</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody">
+                            <!-- Populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
