@@ -36,6 +36,7 @@
     box-sizing: border-box;
     font-family: 'Segoe UI', system-ui, sans-serif;
     transition: all 0.3s ease;
+    -webkit-user-select: none;
     user-select: none;
 }
 
@@ -144,6 +145,10 @@ body {
     color: var(--text-sec);
 }
 
+.badge-hidden {
+    visibility: hidden;
+}
+
 .prev-expr {
     min-height: 1.2rem;
     font-size: 1rem;
@@ -234,7 +239,11 @@ body {
 
 .btn.execute:active {
     box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.3);
-    color: white;
+ 
+
+.btn.execute-wide {
+    grid-column: span 2;
+}   color: white;
 }
 
 .history-panel {

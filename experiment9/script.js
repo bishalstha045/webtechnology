@@ -115,7 +115,7 @@ class ScientificCalculator {
         else if (key === 'Escape') this.handleAction('clearAll');
     }
 
-    async calculate() {
+    calculate() {
         if (!this.currentInput || this.currentInput === 'Error') return;
 
         const expr = this.currentInput;
@@ -124,50 +124,59 @@ class ScientificCalculator {
         let parsed = expr
             .replace(/×/g, '*')
             .replace(/÷/g, '/')
-            .replace(/−/g, '-')
-            .replace(/π/g, 'pi()')
-            .replace(/e(?!x)/g, 'exp(1)')
-            .replace(/sqrt\(/g, 'sqrt(')
-            .replace(/cbrt\(/g, 'cbrt(')
-            .replace(/log\(/g, 'log10(')
-            .replace(/ln\(/g, 'log(')
-            .replace(/asin\(/g, this.isDegree ? 'rad2deg(asin(' : 'asin(')
-            .replace(/acos\(/g, this.isDegree ? 'rad2deg(acos(' : 'acos(')
-            .replace(/atan\(/g, this.isDegree ? 'rad2deg(atan(' : 'atan(')
-            .replace(/sin\(/g, this.isDegree ? 'sin(deg2rad(' : 'sin(')
-            .replace(/cos\(/g, this.isDegree ? 'cos(deg2rad(' : 'cos(')
-            .replace(/tan\(/g, this.isDegree ? 'tan(deg2rad(' : 'tan(')
-            .replace(/\|([^\|]+)\|/g, 'abs($1)')
-            .replace(/e\^/g, 'exp(');
+            .replace(/−/g, '-');
 
-        // Power (x^y) - transform to pow()
-        parsed = parsed.replace(/(\w+|\([^)]+\))\^(\w+|\([^)]+\))/g, 'pow($1, $2)');
-
-        // Handle Factorial locally before sending to PHP
+        // Handle Factorial locally
         while (parsed.includes('!')) {
             parsed = parsed.replace(/(\d+)!/, (match, p1) => this.factorial(parseInt(p1)));
         }
 
-        this.currentInput = '...';
-        this.updateDisplay();
+        // Helper functions for degrees and radians
+        const rad2deg = (rad) => rad * (180 / Math.PI);
+        const deg2rad = (deg) => deg * (Math.PI / 180);
 
         try {
-            const response = await fetch('calculate.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ parsedPHP: parsed })
-            });
+            // math logic context mapping
+            const context = {
+                pi: Math.PI,
+                e: Math.E,
+                sqrt: Math.sqrt,
+                cbrt: Math.cbrt,
+                log: Math.log10,
+                ln: Math.log,
+                abs: Math.abs,
+                exp: Math.exp,
+                sin: (val) => this.isDegree ? Math.sin(deg2rad(val)) : Math.sin(val),
+                cos: (val) => this.isDegree ? Math.cos(deg2rad(val)) : Math.cos(val),
+                tan: (val) => this.isDegree ? Math.tan(deg2rad(val)) : Math.tan(val),
+                asin: (val) => this.isDegree ? rad2deg(Math.asin(val)) : Math.asin(val),
+                acos: (val) => this.isDegree ? rad2deg(Math.acos(val)) : Math.acos(val),
+                atan: (val) => this.isDegree ? rad2deg(Math.atan(val)) : Math.atan(val)
+            };
 
-            const data = await response.json();
+            parsed = parsed
+                .replace(/π/g, 'pi')
+                .replace(/e(?!\w)/g, 'e')   // Replace standalone e with context e
+                .replace(/\|([^\|]+)\|/g, 'abs($1)')
+                .replace(/\^/g, '**');
 
-            if (data.error) {
-                this.currentInput = 'Error';
-            } else {
-                this.currentInput = data.result.toString();
-                this.addToHistory(expr, this.currentInput);
+            // Evaluate strictly using Function for isolation
+            const argNames = Object.keys(context);
+            const argValues = Object.values(context);
+            const evaluator = new Function(...argNames, `return (${parsed});`);
+            
+            let result = evaluator(...argValues);
+
+            if (result === Infinity || Number.isNaN(result) || result === undefined) {
+                throw new Error("Math Error");
             }
+
+            // Ensure precision avoids things like 0.1+0.2=0.300000004
+            result = parseFloat(result.toFixed(10));
+            
+            this.currentInput = result.toString();
+            this.addToHistory(expr, this.currentInput);
+
         } catch (error) {
             this.currentInput = 'Error';
         }

@@ -2,10 +2,10 @@
 // config.php
 error_reporting(0); // Ensure no HTML error warnings break the JSON response API
 
-$host = 'sql208.infinityfree.com';
-$db   = 'if0_41611342_studentmanagement';
-$user = 'if0_41611342';
-$pass = '1s9H6fMGJJqf'; // Default XAMPP password is empty
+$host = 'localhost';
+$db   = 'student_management';
+$user = 'root';
+$pass = ''; // Default XAMPP password is empty
 
 try {
     $pdo = @new PDO("mysql:host=$host;dbname=$db;charset=utf8mb4", $user, $pass);

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
+    <button class="theme-toggle" id="themeToggle" title="Toggle Theme"><i class="fas fa-moon"></i></button>
 
     <div class="toast" id="toast">Copied to clipboard!</div>
 
@@ -19,7 +19,7 @@
             <div class="display">
                 <div class="top-bar">
                     <span id="angleMode" class="badge">DEG</span>
-                    <span id="memoryBadge" class="badge" style="visibility:hidden">M</span>
+                    <span id="memoryBadge" class="badge badge-hidden">M</span>
                 </div>
                 <div class="prev-expr" id="prevDisplay"></div>
                 <div class="current-expr" id="currDisplay">0</div>
@@ -79,7 +79,7 @@
                 <button class="btn action" data-value="%">%</button>
                 <button class="btn number" data-value="0">0</button>
                 <button class="btn number" data-value=".">.</button>
-                <button class="btn execute" data-action="calculate" style="grid-column: span 2">=</button>
+                <button class="btn execute execute-wide" data-action="calculate">=</button>
             </div>
         </main>
 

@@ -322,7 +322,7 @@ function updateThemeIcon(theme) {
 
 // CSV Export
 document.getElementById('btnExport').addEventListener('click', () => {
-    window.location.href = 'fetch.php?export=csv'; // Extra feature, could be implemented in backend
+    // // Extra feature, could be implemented in backend: window.location.href = 'fetch.php?export=csv'; 
     // Since we don't have CSV logic in fetch.php natively yet, let's just do frontend CSV generation:
     exportTableToCSV('students.csv');
 });

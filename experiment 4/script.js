@@ -21,37 +21,37 @@ const form = document.querySelector('form');
 
 form.addEventListener('submit', function (e) {
     e.preventDefault();
-    
+
     const name = document.getElementById('name').value.trim();
     const email = document.getElementById('email').value.trim();
     const message = document.getElementById('message').value.trim();
-    
+
     // Validation
     if (name === '') {
         alert('Please enter your full name.');
         return;
     }
-    
+
     if (email === '') {
         alert('Please enter your email address.');
         return;
     }
-    
+
     // Simple email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
         alert('Please enter a valid email address.');
         return;
     }
-    
+
     if (message === '') {
         alert('Please enter your message.');
         return;
     }
-    
+
     // Show success message
     alert('Thank you for your message! I will get back to you soon.');
-    
+
     // Reset form
     form.reset();
 });
@@ -61,7 +61,7 @@ form.addEventListener('submit', function (e) {
 // ===============================================
 window.addEventListener('scroll', function () {
     const backToTopLink = document.querySelector('a[href="#top"]');
-    
+
     if (window.scrollY > 300) {
         backToTopLink.style.display = 'inline';
         backToTopLink.style.opacity = '1';
@@ -77,18 +77,18 @@ window.addEventListener('scroll', function () {
 window.addEventListener('scroll', function () {
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('nav a');
-    
+
     let currentSection = '';
-    
+
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.clientHeight;
-        
+
         if (scrollY >= sectionTop - 200) {
             currentSection = section.getAttribute('id');
         }
     });
-    
+
     navLinks.forEach(link => {
         link.classList.remove('active');
         if (link.getAttribute('href') === '#' + currentSection) {
@@ -103,7 +103,7 @@ window.addEventListener('scroll', function () {
 window.addEventListener('load', function () {
     // Fade in sections on load
     const sections = document.querySelectorAll('section');
-    
+
     sections.forEach((section, index) => {
         section.style.opacity = '0';
         section.style.animation = `fadeIn 0.6s ease-in-out ${index * 0.1}s forwards`;
